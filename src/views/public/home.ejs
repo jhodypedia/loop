@@ -1,41 +1,42 @@
+<!-- HERO -->
 <div class="card animate-fadeIn">
   <div class="h1">LoopLab — Buat Video Loop Tanpa Batas</div>
   <p class="lead">
-    Dengan <b>LoopLab</b> kamu bisa membuat video berulang (looping) dengan mudah, 
-    hasil jernih dan ukuran tetap ringan. Cocok untuk konten musik, relaksasi, 
-    presentasi, hingga kebutuhan sosial media.
+    Ubah video pendekmu menjadi <b>video berulang (loop)</b> dengan hasil jernih dan ukuran tetap ringan. 
+    Cocok untuk <b>musik, relaksasi, presentasi,</b> hingga kebutuhan sosial media.
   </p>
+</div>
+
+<!-- FORM UPLOAD -->
+<div class="card animate-slideUp">
+  <div class="h1" style="font-size:20px">Buat Video Loop Baru</div>
+  <p class="lead">Isi form di bawah untuk membuat video loop sesuai durasi yang kamu inginkan.</p>
 
   <form id="uploadForm" class="row row-3" enctype="multipart/form-data" style="gap:16px">
-    <!-- Upload Video -->
     <div class="form-group">
       <label class="form-label">Pilih Video</label>
       <input class="file" type="file" name="video" accept="video/*" required />
-      <small class="form-desc">Upload video pendek (maksimal 200MB) untuk diproses menjadi loop.</small>
+      <small class="form-desc">Upload video pendek (maks 200MB).</small>
     </div>
 
-    <!-- Clip Seconds -->
     <div class="form-group">
       <label class="form-label">Durasi Clip (detik)</label>
       <input class="input" type="number" name="seconds" value="5" min="2" />
-      <small class="form-desc">Potongan kecil yang akan diulang secara seamless.</small>
+      <small class="form-desc">Potongan kecil yang akan diulang-ulang.</small>
     </div>
 
-    <!-- Output Minutes -->
     <div class="form-group">
       <label class="form-label">Durasi Output (menit)</label>
       <input class="input" type="number" name="minutes" value="0" min="0" />
-      <small class="form-desc">Atur hasil akhir dalam hitungan menit.</small>
+      <small class="form-desc">Hasil akhir dalam hitungan menit.</small>
     </div>
 
-    <!-- Output Hours -->
     <div class="form-group">
       <label class="form-label">Durasi Output (jam)</label>
       <input class="input" type="number" name="hours" value="0" min="0" />
-      <small class="form-desc">Atur hasil akhir dalam hitungan jam.</small>
+      <small class="form-desc">Hasil akhir dalam hitungan jam.</small>
     </div>
 
-    <!-- Turnstile Token -->
     <textarea name="cf-turnstile-response" style="display:none"></textarea>
 
     <div style="grid-column: 1/-1; text-align:center">
@@ -44,11 +45,34 @@
   </form>
 </div>
 
+<!-- HOW IT WORKS -->
+<div class="card animate-fadeIn" style="margin-top:18px">
+  <div class="h1" style="text-align:center">Bagaimana Cara Kerjanya?</div>
+  <div class="grid grid-3" style="margin-top:20px; text-align:center">
+    <div class="step-card">
+      <div class="step-icon">📤</div>
+      <h3>1. Upload Video</h3>
+      <p class="step-desc">Pilih video pendek yang ingin dijadikan loop.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-icon">⚙️</div>
+      <h3>2. Atur Durasi</h3>
+      <p class="step-desc">Tentukan berapa detik clip dan berapa lama hasil akhir.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-icon">✅</div>
+      <h3>3. Download Hasil</h3>
+      <p class="step-desc">Video loop siap digunakan di semua platform.</p>
+    </div>
+  </div>
+</div>
+
+<!-- GALLERY -->
 <div class="card animate-slideUp" style="margin-top:18px">
   <div class="flex" style="justify-content:space-between;align-items:center">
     <div>
       <div class="h1" style="font-size:20px">Galeri Terbaru</div>
-      <p class="lead">Hasil video loop terbaru dari pengguna lain.</p>
+      <p class="lead">Lihat hasil video loop terbaru dari pengguna lain.</p>
     </div>
     <button id="btnReload" class="btn ghost btn-animate">🔄 Refresh</button>
   </div>
