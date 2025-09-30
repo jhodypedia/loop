@@ -6,7 +6,6 @@
       Ubah video pendekmu menjadi <b>loop tanpa batas</b> dengan kualitas jernih 
       dan ukuran tetap ringan. Praktis, cepat, dan gratis untuk semua orang.
     </p>
-    <a href="#uploadForm" class="btn primary btn-animate hero-btn">🚀 Mulai Sekarang</a>
   </div>
 </section>
 
@@ -70,16 +69,23 @@
   </div>
 </div>
 
-<!-- GALLERY -->
+<!-- GALLERY CAROUSEL -->
 <div class="card animate-slideUp" style="margin-top:18px">
   <div class="flex" style="justify-content:space-between;align-items:center">
     <div>
       <div class="h1" style="font-size:20px">Galeri Terbaru</div>
-      <p class="lead">Lihat hasil video loop terbaru dari pengguna lain.</p>
+      <p class="lead">Hasil video loop terbaru dari pengguna lain.</p>
     </div>
-    <button id="btnReload" class="btn ghost btn-animate">🔄 Refresh</button>
+    <div class="flex gap-2">
+      <button id="btnLeft" class="btn ghost">⬅️</button>
+      <button id="btnRight" class="btn ghost">➡️</button>
+    </div>
   </div>
-  <div id="gallery" class="grid grid-3" style="margin-top:12px"></div>
+
+  <!-- CAROUSEL WRAPPER -->
+  <div class="carousel-wrapper">
+    <div id="gallery" class="carousel"></div>
+  </div>
 </div>
 
 <script src="/app.js"></script>
