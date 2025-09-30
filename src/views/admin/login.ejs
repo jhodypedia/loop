@@ -1,0 +1,11 @@
+<div class="card" style="max-width:400px;margin:40px auto">
+  <h1 class="h1">Admin Login</h1>
+  <% if (error) { %>
+    <div class="badge err"><%= error %></div>
+  <% } %>
+  <form method="POST" action="/admin/login" class="row" style="margin-top:12px">
+    <input class="input" type="email" name="email" placeholder="Email" required>
+    <input class="input" type="password" name="password" placeholder="Password" required>
+    <button class="btn primary">Login</button>
+  </form>
+</div>
