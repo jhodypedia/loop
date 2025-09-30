@@ -1,25 +1,56 @@
-<div class="card">
-  <div class="h1">Buat Seamless Loop — Full AJAX</div>
-  <p class="lead">Total looping pernah dibuat: <b id="totalCounter"><%= total %></b></p>
+<div class="card animate-fadeIn">
+  <div class="h1">LoopLab — Buat Video Loop Tanpa Batas</div>
+  <p class="lead">
+    Dengan <b>LoopLab</b> kamu bisa membuat video berulang (looping) dengan mudah, 
+    hasil jernih dan ukuran tetap ringan. Cocok untuk konten musik, relaksasi, 
+    presentasi, hingga kebutuhan sosial media.
+  </p>
 
-  <!-- Jika Turnstile enabled, script sudah di-include pada <head>. Kita gunakan widget invisible (textarea token) -->
-  <form id="uploadForm" class="row row-3" enctype="multipart/form-data">
-    <input class="file" type="file" name="video" accept="video/*" required />
-    <input class="input" type="number" name="seconds" value="5" min="2" placeholder="Detik clip" />
-    <div class="row" style="grid-template-columns:1fr 1fr; gap:8px">
-      <input class="input" type="number" name="minutes" value="0" min="0" placeholder="Menit output">
-      <input class="input" type="number" name="hours" value="0" min="0" placeholder="Jam output">
+  <form id="uploadForm" class="row row-3" enctype="multipart/form-data" style="gap:16px">
+    <!-- Upload Video -->
+    <div class="form-group">
+      <label class="form-label">Pilih Video</label>
+      <input class="file" type="file" name="video" accept="video/*" required />
+      <small class="form-desc">Upload video pendek (maksimal 200MB) untuk diproses menjadi loop.</small>
     </div>
-    <!-- Tempat token Turnstile (invisible mode menaruh token ke textarea) -->
+
+    <!-- Clip Seconds -->
+    <div class="form-group">
+      <label class="form-label">Durasi Clip (detik)</label>
+      <input class="input" type="number" name="seconds" value="5" min="2" />
+      <small class="form-desc">Potongan kecil yang akan diulang secara seamless.</small>
+    </div>
+
+    <!-- Output Minutes -->
+    <div class="form-group">
+      <label class="form-label">Durasi Output (menit)</label>
+      <input class="input" type="number" name="minutes" value="0" min="0" />
+      <small class="form-desc">Atur hasil akhir dalam hitungan menit.</small>
+    </div>
+
+    <!-- Output Hours -->
+    <div class="form-group">
+      <label class="form-label">Durasi Output (jam)</label>
+      <input class="input" type="number" name="hours" value="0" min="0" />
+      <small class="form-desc">Atur hasil akhir dalam hitungan jam.</small>
+    </div>
+
+    <!-- Turnstile Token -->
     <textarea name="cf-turnstile-response" style="display:none"></textarea>
-    <button id="btnUpload" class="btn primary">Proses</button>
+
+    <div style="grid-column: 1/-1; text-align:center">
+      <button id="btnUpload" class="btn primary btn-animate">🚀 Buat Video Loop</button>
+    </div>
   </form>
 </div>
 
-<div class="card" style="margin-top:18px">
+<div class="card animate-slideUp" style="margin-top:18px">
   <div class="flex" style="justify-content:space-between;align-items:center">
-    <div class="h1" style="font-size:20px">Galeri Terbaru</div>
-    <button id="btnReload" class="btn ghost">Reload</button>
+    <div>
+      <div class="h1" style="font-size:20px">Galeri Terbaru</div>
+      <p class="lead">Hasil video loop terbaru dari pengguna lain.</p>
+    </div>
+    <button id="btnReload" class="btn ghost btn-animate">🔄 Refresh</button>
   </div>
   <div id="gallery" class="grid grid-3" style="margin-top:12px"></div>
 </div>
