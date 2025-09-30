@@ -23,7 +23,7 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage, limits:{ fileSize: 200*1024*1024 } });
 
-// Helper Turnstile verify (ON jika admin enable)
+// ✅ Turnstile verify (aktif jika admin enable)
 async function verifyTurnstile(req){
   const s = Object.fromEntries((await Setting.findAll()).map(x=>[x.key,x.value]));
   if((s.turnstile_enabled||"0")!=="1") return true;
@@ -39,7 +39,7 @@ async function verifyTurnstile(req){
   }catch{ return false; }
 }
 
-// Home (EJS) – widget Turnstile akan ditambah di client jika enabled
+// ✅ Home (EJS)
 router.get("/", async (req,res)=>{
   const total = await Video.count();
   const s = Object.fromEntries((await Setting.findAll()).map(x=>[x.key,x.value]));
@@ -49,7 +49,7 @@ router.get("/", async (req,res)=>{
   res.render("public/home", { title:"LoopLab", total, head });
 });
 
-// List galeri (AJAX)
+// ✅ List galeri (AJAX)
 router.get("/api/videos", async (req,res)=>{
   const limit = Math.min(parseInt(req.query.limit||"9"), 30);
   const items = await Video.findAll({ order:[["createdAt","DESC"]], limit });
@@ -57,7 +57,7 @@ router.get("/api/videos", async (req,res)=>{
   res.json({ items, total });
 });
 
-// Upload (AJAX) + limit harian + enqueue
+// ✅ Upload (AJAX) + limit harian + enqueue
 router.post("/api/upload", upload.single("video"), async (req,res)=>{
   try{
     if(!(await verifyTurnstile(req))) return res.json({ error:true, msg:"Captcha gagal" });
@@ -99,9 +99,16 @@ router.post("/api/upload", upload.single("video"), async (req,res)=>{
     const outMp4  = path.join(OUT_DIR, `${id}.mp4`);
     const outWebm = path.join(OUT_DIR, `${id}.webm`);
 
-    await Video.create({ id, srcOriginal, loopSeconds: seconds, totalSeconds, status:"queued" });
+    await Video.create({ 
+      id, 
+      srcOriginal, 
+      loopSeconds: seconds, 
+      totalSeconds, 
+      status:"queued", 
+      progress: 0 // ⬅️ mulai dari 0
+    });
 
-    await queue.add("process", { id, srcOriginal, seconds, width, fps, loops });
+    await queue.add("process", { id, srcOriginal, seconds, width, fps, loops, totalSeconds });
 
     res.json({ success:true, id });
   }catch(e){
@@ -110,11 +117,18 @@ router.post("/api/upload", upload.single("video"), async (req,res)=>{
   }
 });
 
-// Cek status (AJAX)
+// ✅ Status (AJAX)
 router.get("/api/status/:id", async (req,res)=>{
   const v = await Video.findByPk(req.params.id);
   if(!v) return res.status(404).json({ error:true });
-  res.json({ id:v.id, status:v.status, mp4:v.srcMp4, webm:v.srcWebm, message:v.message });
+  res.json({ 
+    id: v.id, 
+    status: v.status, 
+    progress: v.progress || 0,   // ⬅️ progress dikirim
+    mp4: v.srcMp4, 
+    webm: v.srcWebm, 
+    message: v.message 
+  });
 });
 
 export default router;
