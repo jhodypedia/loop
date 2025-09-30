@@ -15,9 +15,17 @@ export const Video = sequelize.define("Video", {
   srcWebm: DataTypes.STRING,
   loopSeconds: DataTypes.INTEGER,
   totalSeconds: DataTypes.INTEGER,
-  status: { type: DataTypes.ENUM("queued","processing","done","failed","files_deleted"), defaultValue:"queued" },
+  status: { 
+    type: DataTypes.ENUM("queued","processing","done","failed","files_deleted"), 
+    defaultValue:"queued" 
+  },
+  progress: {             // ⬅️ Tambahan kolom progress
+    type: DataTypes.INTEGER,
+    defaultValue: 0
+  },
   message: DataTypes.TEXT
 });
+
 
 export const UserAnon = sequelize.define("UserAnon", {
   fingerprint: { type: DataTypes.STRING, primaryKey:true },
