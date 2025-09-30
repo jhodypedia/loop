@@ -1,7 +1,7 @@
 <!-- HERO SECTION -->
 <section class="hero animate-fadeIn">
   <div class="hero-inner">
-    <h1 class="hero-title">LoopLab</h1>
+    <h1 class="hero-title"><i class="fa-solid fa-infinity me-2"></i>LoopLab</h1>
     <p class="hero-tagline">
       Ubah video pendekmu menjadi <b>loop tanpa batas</b> dengan kualitas jernih 
       dan ukuran tetap ringan. Praktis, cepat, dan gratis untuk semua orang.
@@ -11,30 +11,30 @@
 
 <!-- FORM UPLOAD -->
 <div class="card animate-slideUp" id="uploadForm">
-  <div class="h1" style="font-size:20px">Buat Video Loop Baru</div>
+  <div class="h1" style="font-size:20px"><i class="fa-solid fa-video me-2"></i>Buat Video Loop Baru</div>
   <p class="lead">Isi form di bawah untuk membuat video loop sesuai durasi yang kamu inginkan.</p>
 
   <form id="uploadFormInner" class="row row-3" enctype="multipart/form-data" style="gap:16px">
     <div class="form-group">
-      <label class="form-label">Pilih Video</label>
+      <label class="form-label"><i class="fa-solid fa-upload me-1"></i>Pilih Video</label>
       <input class="file" type="file" name="video" accept="video/*" required />
       <small class="form-desc">Upload video pendek (maks 200MB).</small>
     </div>
 
     <div class="form-group">
-      <label class="form-label">Durasi Clip (detik)</label>
+      <label class="form-label"><i class="fa-solid fa-scissors me-1"></i>Durasi Clip (detik)</label>
       <input class="input" type="number" name="seconds" value="5" min="2" />
       <small class="form-desc">Potongan kecil yang akan diulang-ulang.</small>
     </div>
 
     <div class="form-group">
-      <label class="form-label">Durasi Output (menit)</label>
+      <label class="form-label"><i class="fa-regular fa-clock me-1"></i>Durasi Output (menit)</label>
       <input class="input" type="number" name="minutes" value="0" min="0" />
       <small class="form-desc">Hasil akhir dalam hitungan menit.</small>
     </div>
 
     <div class="form-group">
-      <label class="form-label">Durasi Output (jam)</label>
+      <label class="form-label"><i class="fa-regular fa-hourglass me-1"></i>Durasi Output (jam)</label>
       <input class="input" type="number" name="hours" value="0" min="0" />
       <small class="form-desc">Hasil akhir dalam hitungan jam.</small>
     </div>
@@ -42,27 +42,32 @@
     <textarea name="cf-turnstile-response" style="display:none"></textarea>
 
     <div style="grid-column: 1/-1; text-align:center">
-      <button id="btnUpload" class="btn primary btn-animate">🚀 Buat Video Loop</button>
+      <button id="btnUpload" class="btn primary btn-animate">
+        <i class="fa-solid fa-rocket me-1"></i>Buat Video Loop
+      </button>
     </div>
   </form>
+
+  <!-- PROGRESS CONTAINER -->
+  <div id="progressContainer" style="margin-top:20px"></div>
 </div>
 
 <!-- HOW IT WORKS -->
 <div class="card animate-fadeIn" style="margin-top:18px">
-  <div class="h1" style="text-align:center">Bagaimana Cara Kerjanya?</div>
+  <div class="h1" style="text-align:center"><i class="fa-solid fa-question-circle me-2"></i>Bagaimana Cara Kerjanya?</div>
   <div class="grid grid-3" style="margin-top:20px; text-align:center">
     <div class="step-card">
-      <div class="step-icon">📤</div>
+      <div class="step-icon"><i class="fa-solid fa-upload"></i></div>
       <h3>1. Upload Video</h3>
       <p class="step-desc">Pilih video pendek yang ingin dijadikan loop.</p>
     </div>
     <div class="step-card">
-      <div class="step-icon">⚙️</div>
+      <div class="step-icon"><i class="fa-solid fa-sliders"></i></div>
       <h3>2. Atur Durasi</h3>
       <p class="step-desc">Tentukan berapa detik clip dan berapa lama hasil akhir.</p>
     </div>
     <div class="step-card">
-      <div class="step-icon">✅</div>
+      <div class="step-icon"><i class="fa-solid fa-download"></i></div>
       <h3>3. Download Hasil</h3>
       <p class="step-desc">Video loop siap digunakan di semua platform.</p>
     </div>
@@ -73,12 +78,16 @@
 <div class="card animate-slideUp" style="margin-top:18px">
   <div class="flex" style="justify-content:space-between;align-items:center">
     <div>
-      <div class="h1" style="font-size:20px">Galeri Terbaru</div>
-      <p class="lead">Hasil video loop terbaru dari pengguna lain.</p>
+      <div class="h1" style="font-size:20px"><i class="fa-solid fa-photo-film me-2"></i>Galeri Terbaru</div>
+      <p class="lead">
+        Hasil video loop terbaru dari pengguna lain.  
+        Total looping: <b id="totalCounter">0</b>
+      </p>
     </div>
     <div class="flex gap-2">
-      <button id="btnLeft" class="btn ghost">⬅️</button>
-      <button id="btnRight" class="btn ghost">➡️</button>
+      <button id="btnLeft" class="btn ghost"><i class="fa-solid fa-chevron-left"></i></button>
+      <button id="btnRight" class="btn ghost"><i class="fa-solid fa-chevron-right"></i></button>
+      <button id="btnReload" class="btn ghost"><i class="fa-solid fa-rotate"></i></button>
     </div>
   </div>
 
