@@ -1,0 +1,15 @@
+PORT=3000
+
+DB_HOST=127.0.0.1
+DB_NAME=loopdb
+DB_USER=root
+DB_PASS=
+
+ADMIN_EMAIL=admin@local
+ADMIN_PASSWORD=admin123
+
+REDIS_HOST=127.0.0.1
+REDIS_PORT=6379
+
+# batas durasi hasil akhir (detik)
+MAX_LOOP_SECONDS=7200
