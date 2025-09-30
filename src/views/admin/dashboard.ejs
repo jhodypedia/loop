@@ -1,0 +1,68 @@
+<div class="card">
+  <div class="flex" style="justify-content:space-between;align-items:center">
+    <div>
+      <div class="h1">Admin Dashboard</div>
+      <p class="lead">Kelola video, subscription, dan pengaturan.</p>
+    </div>
+    <div class="flex gap-3">
+      <button class="btn ghost" data-tab="tab-overview">Overview</button>
+      <button class="btn ghost" data-tab="tab-videos">Videos</button>
+      <button class="btn ghost" data-tab="tab-subs">Subscriptions</button>
+      <button class="btn ghost" data-tab="tab-settings">Settings</button>
+    </div>
+  </div>
+</div>
+
+<!-- OVERVIEW -->
+<div id="tab-overview" class="card" style="margin-top:18px">
+  <div class="grid" style="grid-template-columns:repeat(3,1fr)">
+    <div class="card"><div class="lead">Total</div><div id="met-total" class="h1" style="font-size:26px">—</div></div>
+    <div class="card"><div class="lead">Done</div><div id="met-done" class="h1" style="font-size:26px">—</div></div>
+    <div class="card"><div class="lead">Files Deleted</div><div id="met-deleted" class="h1" style="font-size:26px">—</div></div>
+  </div>
+</div>
+
+<!-- VIDEOS -->
+<div id="tab-videos" class="card" style="margin-top:18px; display:none">
+  <div class="flex" style="justify-content:space-between;align-items:center">
+    <div class="h1" style="font-size:20px">Semua Video</div>
+    <button id="refreshVideos" class="btn ghost">Reload</button>
+  </div>
+  <table class="table" style="margin-top:12px">
+    <thead><tr><th>ID</th><th>Status</th><th>Loop</th><th>Aksi</th></tr></thead>
+    <tbody id="videosBody"></tbody>
+  </table>
+</div>
+
+<!-- SUBSCRIPTIONS -->
+<div id="tab-subs" class="card" style="margin-top:18px; display:none">
+  <div class="row" style="grid-template-columns:2fr 1fr auto; align-items:center">
+    <input id="subFp" class="input" placeholder="Fingerprint">
+    <input id="subDays" class="input" type="number" value="30" min="1" placeholder="Hari">
+    <button id="btnActivateSub" class="btn primary">Activate</button>
+  </div>
+  <table class="table" style="margin-top:12px">
+    <thead><tr><th>Fingerprint</th><th>Status</th><th>Expire At</th></tr></thead>
+    <tbody id="subsBody"></tbody>
+  </table>
+</div>
+
+<!-- SETTINGS -->
+<div id="tab-settings" class="card" style="margin-top:18px; display:none">
+  <div class="grid" style="grid-template-columns:repeat(3,1fr); gap:12px">
+    <div><div class="lead">Default clip seconds</div><input id="setDefSec" class="input" value="5"></div>
+    <div><div class="lead">Default width</div><input id="setDefW" class="input" value="1280"></div>
+    <div><div class="lead">Default FPS</div><input id="setDefFps" class="input" value="30"></div>
+  </div>
+  <div style="margin-top:12px">
+    <div class="lead">Turnstile</div>
+    <div class="grid" style="grid-template-columns:1fr 1fr 150px; gap:12px">
+      <input id="setTsSite" class="input" placeholder="Site Key">
+      <input id="setTsSecret" class="input" placeholder="Secret Key">
+      <select id="setTsEnabled" class="select"><option value="0">Disabled</option><option value="1">Enabled</option></select>
+    </div>
+  </div>
+  <div style="margin-top:12px"><button id="btnSaveSettings" class="btn primary">Simpan</button></div>
+</div>
+
+<script src="/admin.js"></script>
