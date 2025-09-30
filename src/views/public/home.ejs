@@ -1,0 +1,27 @@
+<div class="card">
+  <div class="h1">Buat Seamless Loop — Full AJAX</div>
+  <p class="lead">Total looping pernah dibuat: <b id="totalCounter"><%= total %></b></p>
+
+  <!-- Jika Turnstile enabled, script sudah di-include pada <head>. Kita gunakan widget invisible (textarea token) -->
+  <form id="uploadForm" class="row row-3" enctype="multipart/form-data">
+    <input class="file" type="file" name="video" accept="video/*" required />
+    <input class="input" type="number" name="seconds" value="5" min="2" placeholder="Detik clip" />
+    <div class="row" style="grid-template-columns:1fr 1fr; gap:8px">
+      <input class="input" type="number" name="minutes" value="0" min="0" placeholder="Menit output">
+      <input class="input" type="number" name="hours" value="0" min="0" placeholder="Jam output">
+    </div>
+    <!-- Tempat token Turnstile (invisible mode menaruh token ke textarea) -->
+    <textarea name="cf-turnstile-response" style="display:none"></textarea>
+    <button id="btnUpload" class="btn primary">Proses</button>
+  </form>
+</div>
+
+<div class="card" style="margin-top:18px">
+  <div class="flex" style="justify-content:space-between;align-items:center">
+    <div class="h1" style="font-size:20px">Galeri Terbaru</div>
+    <button id="btnReload" class="btn ghost">Reload</button>
+  </div>
+  <div id="gallery" class="grid grid-3" style="margin-top:12px"></div>
+</div>
+
+<script src="/app.js"></script>
