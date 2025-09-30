@@ -1,18 +1,21 @@
-<!-- HERO -->
-<div class="card animate-fadeIn">
-  <div class="h1">LoopLab — Buat Video Loop Tanpa Batas</div>
-  <p class="lead">
-    Ubah video pendekmu menjadi <b>video berulang (loop)</b> dengan hasil jernih dan ukuran tetap ringan. 
-    Cocok untuk <b>musik, relaksasi, presentasi,</b> hingga kebutuhan sosial media.
-  </p>
-</div>
+<!-- HERO SECTION -->
+<section class="hero animate-fadeIn">
+  <div class="hero-inner">
+    <h1 class="hero-title">LoopLab</h1>
+    <p class="hero-tagline">
+      Ubah video pendekmu menjadi <b>loop tanpa batas</b> dengan kualitas jernih 
+      dan ukuran tetap ringan. Praktis, cepat, dan gratis untuk semua orang.
+    </p>
+    <a href="#uploadForm" class="btn primary btn-animate hero-btn">🚀 Mulai Sekarang</a>
+  </div>
+</section>
 
 <!-- FORM UPLOAD -->
-<div class="card animate-slideUp">
+<div class="card animate-slideUp" id="uploadForm">
   <div class="h1" style="font-size:20px">Buat Video Loop Baru</div>
   <p class="lead">Isi form di bawah untuk membuat video loop sesuai durasi yang kamu inginkan.</p>
 
-  <form id="uploadForm" class="row row-3" enctype="multipart/form-data" style="gap:16px">
+  <form id="uploadFormInner" class="row row-3" enctype="multipart/form-data" style="gap:16px">
     <div class="form-group">
       <label class="form-label">Pilih Video</label>
       <input class="file" type="file" name="video" accept="video/*" required />
